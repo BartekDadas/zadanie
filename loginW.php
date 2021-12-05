@@ -5,26 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel = "stylesheet" type="text/css" href = "styl.css">
 </head>
-<body>
-    <!-- <form id="logowanie" action="" method="post">
-        Nazwa:<Input type="text" nazwa="nazwa"><br>
-        Logowanie<input type="submit">     -->
+<body> 
+<h2>Podaj nick</h2>
+<form  method="GET">
+<div><input type="text" name="nazwa"></div>
+<div><input type="submit" value="Zaloguj"></div>
+</form>
 <?php
-echo Podaj nick
-$data = $_POST['Nazwa']
-if(isset($_GET["$data"])){
+$currentName = $_GET['nazwa'];
+if(isset($_GET['nazwa'])){
        ?>
     <?php
-    $bar =$_GET["data"];
-    $_SESSION['currentName'] = $bar;
+    $_SESSION['nazwa']= $currentName;
     ?>   
     <script>window.location.href = 'wyswietlW.php';</script>
       <?php
     }
-else{
-   echo "Wprowadź nick";
- }
  ?>
 
 </body>

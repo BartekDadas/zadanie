@@ -11,11 +11,13 @@
     <!-- <form id="logowanie" action="" method="post">
         Nazwa:<Input type="text" nazwa="nazwa"><br>
         Logowanie<input type="submit">     -->
+<form method="POST">
+<div><input type="text" name="tresc"></div>
+<div><input type="submit" value="Dodaj"></div>
+</form>
 <?php
-
-echo '<h3>Dodaj wpis</h3>';
-$tresc=$_POST['Tresc'];
-$p_nazwa=$_GET['nazwa']
+$tresc=$_GET['tresc'];
+$p_nazwa= $_SESSION_['nazwa']
 $con =mysqli_connect("localhost", "root", "","trio") or die ("Błąd połączenia");
 $query="INSERT INTO trio ('name','tresc') VALUES ('$p_nazwa','$tresc');";
 mysqli_query($con,$query) or die ("Błąd zapytania"); 
