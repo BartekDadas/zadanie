@@ -7,15 +7,15 @@
     <title>Document</title>
     <link rel = "stylesheet" type="text/css" href = "styl.css">
 </head>
-<!-- <?php
-$con=mysqli_connect("abc","abc","","abc");
+<?php
+$con=mysqli_connect("localhost","root","","trio");
 $id = $_GET['id']; // $id is now defined
 // or assuming your column is indeed an int
 $id = (int)$_GET['id'];
 mysqli_query($con,"DELETE FROM student WHERE id='".$id."'");
 mysqli_close($con);
-header("Location: index.php");
-?>  -->
+// header("Location: index.php");
+?>  
 
 <button onclick="location.href='wyswietlW.php'">Strona główna</button>
 </body>

@@ -13,28 +13,17 @@
     <!-- <form id="logowanie" action="" method="post">
         Nazwa:<Input type="text" nazwa="nazwa"><br>
         Logowanie<input type="submit">     -->
+<table>
 <?php
-$current_User = $_SESSION_['nazwa']
-$con = mysql_connect("localhost", "root", "","trio") or die ("Błąd połączenia");// rozpoczęcie połączenia z bazą danych
-$query="SELECT name,tresc FROM wpisy;";//stworzenie zapytania bazy danych o wyświetlenie nazw i wpisów z tablicy 
+$con = mysqli_connect("localhost", "root", "","trio") or die ("Błąd połączenia");// rozpoczęcie połączenia z bazą danych
+$query="SELECT name_u,tresc FROM wpisy;";//stworzenie zapytania bazy danych o wyświetlenie nazw i wpisów z tablicy 
 $result = mysqli_query($con,$query) or die ("Błąd zapytania"); // wykonanie zapytania 
 while($row = mysqli_fetch_array($result)) { //
-    if('name' == '$current_User') {
-        echo "<tr><td>".$row['tresc']."</td><td>".$row['name']."</td><td>"."<a href=\"deleteW.php?id=".$row['id']."\">Usun</a>"."</td></tr>";
-        echo "<tr><td>".$row['name']."</td><td>".$row['tresc']."</td><td>"."</td></tr>";// wyswietlenie tablicy z nazwami i wpisami
-    }
+    $a="deleteW.php?id=";
+        echo "<tr><td>".$row['tresc']."</td><td>".$row['name_u']."</td><td>"."<a href='$a'>Usun</a>"."</td></tr>";
 }
-mysqli_close($con);// zamknięcie połączenia
+mysqli_close($con);
 ?>
-<!-- <script language = "JavaScript">
-function deleateBtn(){
-    if(isset($_POST['buttonD'])) {
-        $q ="";
-        $r=mysqli_query($con,$q) or die ("Błąd zapytania o usunięcie");
-    }
-}
-</script> -->
-<!-- Stworzenie powrotu do strony z wyświetlaniem postów -->
 <button onclick="location.href='dodajW.php'">Dodaj wpis</button>
 </body>
 </html>

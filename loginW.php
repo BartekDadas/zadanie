@@ -9,21 +9,16 @@
 </head>
 <body> 
 <h2>Podaj nick</h2>
-<form  method="GET">
+<form  action="wyswietlW.php" method="GET">
 <div><input type="text" name="nazwa"></div>
 <div><input type="submit" value="Zaloguj"></div>
 </form>
 <?php
-$currentName = $_GET['nazwa'];
 if(isset($_GET['nazwa'])){
-       ?>
-    <?php
-    $_SESSION['nazwa']= $currentName;
-    ?>   
+       ?>   
     <script>window.location.href = 'wyswietlW.php';</script>
       <?php
     }
  ?>
-
 </body>
 </html>
