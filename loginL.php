@@ -9,7 +9,7 @@
 </head>
 <body> 
 <?php
-  unset($_SESSION['nazwa']); // opróżnij wartość nazwy sesji 
+  session_unset(); // opróżnij wartość nazwy sesji 
   echo "Logowanie zostało przeprowadzone prawidłowe" // wyświetl
 ?>
 <!-- Przekieruj do strony logowania -->
