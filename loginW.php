@@ -9,16 +9,12 @@
 </head>
 <body> 
 <h2>Podaj nick</h2>
-<form  action="wyswietlW.php" method="GET">
+<!-- Po naciśnieciu zaloguj przekieruj do strony | metoda pobierz dane od użytkownika jawnie  -->
+<form action="wyswietlW.php"  method="POST"> 
+<!-- Utwórz pole z możliwością wpisania nazwy -->
 <div><input type="text" name="nazwa"></div>
+<!-- Przycisk zatwierdź -->
 <div><input type="submit" value="Zaloguj"></div>
 </form>
-<?php
-if(isset($_GET['nazwa'])){
-       ?>   
-    <script>window.location.href = 'wyswietlW.php';</script>
-      <?php
-    }
- ?>
 </body>
 </html>

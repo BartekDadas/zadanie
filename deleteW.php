@@ -8,15 +8,15 @@
     <link rel = "stylesheet" type="text/css" href = "styl.css">
 </head>
 <?php
-$con=mysqli_connect("localhost","root","","trio");
-$id = $_GET['id']; // $id is now defined
-// or assuming your column is indeed an int
-$id = (int)$_GET['id'];
-mysqli_query($con,"DELETE FROM student WHERE id='".$id."'");
-mysqli_close($con);
-// header("Location: index.php");
-?>  
-
-<button onclick="location.href='wyswietlW.php'">Strona główna</button>
+session_start(); // zacznij sesje 
+$con = mysqli_connect("localhost","root","","trio") or die("Błąd połączenia");
+//połącz z bazą 
+mysqli_query($con,"DELETE FROM wpisy WHERE id='".$_SESSION['id']."'");
+// usuń wiersz gdzie id jest równe przechowanemu id w sesji
+mysqli_close($con); // zamknij połączenie
+unset($_SESSION['id']) // wyczyść sesje przechowującą id
+?> 
+<script>window.location.href = 'wyswietlW.php'</script> 
+<!-- Powrót do strony wyświetania wpisów -->
 </body>
 </html>
