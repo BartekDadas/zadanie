@@ -8,24 +8,30 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="content">
     <h2>Informatyka - przeliczanie</h2>
     <form method="GET">
         <p id="liczba_input"> Podaj liczbe</p>
-        <input id="liczba" type="int" name="num">
+        <input id="liczba" type="int" name="num"> 
+        
         <p id="liczba_wejscie"> Typ liczby </p>
         Decymalny<input type="checkbox"  id="ten1"  name="dec">
-        Szesnastkowy<input type="checkbox" id="sixteen1" name="hex" >
-        Osemkowy<input type="checkbox" id="eight1" name="egh">
-        Dwojkowy<input type="checkbox" id="two1" name="two">
+        Szesnastkowy<input type="checkbox" id="sixteen1" name="hex" onclick="" >
+        Osemkowy<input type="checkbox" id="eight1" name="egh" onclick="">
+        Dwojkowy<input type="checkbox" id="two1" name="two" onclick="">
         <p id="liczba_zamiana"> Typ na jaki chcesz zamienic</p></br>
-        Decymalny<input type="checkbox"  id="ten"  name="dec2" onclick="ten()">
-        Szesnastkowy<input type="checkbox" id="sixteen" name="hex2" onclick="sixteen()">
-        Osemkowy<input type="checkbox" id="eight" name="egh2" onclick="eight()">
-        Dwojkowy<input type="checkbox" id="two" name="two2" onclick="two()">
+        Decymalny<input type="checkbox"  id="ten"  name="dec2" onclick="zamina(this)">
+        Szesnastkowy<input type="checkbox" id="sixteen" name="hex2" onclick="zamina(this)">
+        Osemkowy<input type="checkbox" id="eight" name="egh2" onclick="zamina(this)">
+        Dwojkowy<input type="checkbox" id="two" name="two2" onclick="zamina(this)">
         <input name="btn_count" type="submit" value="Oblicz">
+        
     </form>
-    <div id="wyniki">
-    </div>
+   <div class="wyniki">
+        </div>
     
     <?php
     if(isset($_GET['btn_count'])) {
@@ -48,6 +54,7 @@
     ?>
     <h2> Fizyka - obliczanie temperatur</h2>
     <form method="GET">
+        <div class="left_part">
         <p id="temp_in">Twoja temperatura</p>
         <input id="temperatura" type="float" name="temp">
         <select name="typ_temp">
@@ -55,6 +62,8 @@
             <option id="f">F</option>
             <option id="k">K</optipon>
         </select>
+        </div>
+        <div class="right_part">
         <p>Rodzaj temperatury</p>
         <select name="rodzaj">
             <option id="cel">Celciusz</option>
@@ -62,20 +71,28 @@
             <option id="kel">Kelvin</option>
         </select>
         <input type="submit" value="Przelicz" onclick="temp_result()"/>
-
+        </div>
     </form>
     <p id="answer"></p>
+    </div>
     <SCRIPT language="Javascript">
-   
-        function temp_result() { 
-            var temp = document.getElementById("temperatura");
+        var z2 = document.getElementById("two");
+        var z8 = document.getElementById("eight");
+        var z10 = document.getElemntById("ten");
+        var z16 = document.getElementById("sixteen");
+        
+        var tC = document.getElementById("c");
+        var tF = document.getElementById("f");
+        var tK = document.getElementById("k");
+        const cel = document.getElementById("cel");
+        const frh = document.getElementById("frh");
+        const kel = document.getElementById("kel");
+
+        function temp_result(temperature) { 
+            var temp = document.getElementById("temperatura").value;
+            temp = temp.value;
             if(temp != null) {
-                var tC = document.getElementById("c");
-                var tF = document.getElementById("f");
-                var tK = document.getElementById("k");
-                const cel = document.getElementById("cel");
-                const frh = document.getElementById("frh");
-                const kel = document.getElementById("kel");
+                
                 if(tC.selected == "true") {
                     if(frh.selected == "true") {
                        temp = (temp*9)/5 + 32; 
@@ -86,8 +103,6 @@
                         temp = temp +273.15;
                         const p = document.getElementById("answer");
                         p.innerHTML = temp;
-                        // document.write(temp);
-                    
                     }
                 } 
                 if(tF.selected == "true") {
@@ -117,126 +132,50 @@
             }
 
         }
+        function zTwo(n) {
+            n.value = parseInt(n, 2);
+        }
+        function zEight(n) {
+            n.value = parseInt(n, 8);
+        }
+        function zSixteen(n) {
+            n.value = parseInt(n, 16);
+        }
 
 
-        function two() {
-            var n = document.getElementById("liczba");
-            var cb = document.getElementById("two");
-            var cb2 = decument.getElementById("two1");
-            var cb8 = document.getElementById("eight1");
-            var cb16 = document.getElementById("sixteen1");
-            // if(cb2.checked == "true") {
-            //     n = parseInt(n, 2);
-            // }  
-            if(cb8.checked == "true") {
-                n = parseInt(n, 8);
+        function zamina(n) { 
+            if(z10.checked == "true") {
+                paragraph(n.value);
+            }
+            if(z2.checked == "true") {
+                n.value.toString(2);
+                paragraph(n.value)
+            }
+            if(z8.checked == "true") {
+                n.value.toString(8);
+                paragraph(n.value);
             }   
-            if(cb16.checked == "true") {
-                n = parseInt(n, 16);
+            if(z16.checked == "true") {
+                n.value.toString(16);
+                paragraph(n.value);
             }        
-            
-            if(n == "") {
-                test.style.display="none";
-            } else {
-                if(cb.checked == true) {                   
-                    n.toString(2);
-                    const para = document.createElement("p");
-                    para.innerHTML("Twoj wynik: ".n);
-                    document.getElementById("wyniki").appenedChild(para);
-                }
-            }
         }
-        function eight() {
-            var n = document.getElementById("liczba");
-            var cb = document.getElementById("eight");
-            var cb2 = decument.getElementById("two1");
-            var cb8 = document.getElementById("eight1");
-            var cb16 = document.getElementById("sixteen1");
-            if(cb2.checked == "true") {
-                n = parseInt(n, 2);
-            }  
-            // if(cb8.checked == "true") {
-            //     n = parseInt(n, 8);
-            // }   
-            if(cb16.checked == "true") {
-                n = parseInt(n, 16);
-            }        
-            
-            if(n == "") {
-                test.style.display="none";
-            } else {
-                if(cb.checked == true) {
-                    n.toString(8);
-                    const para = document.createElement("p");
-                    para.innerHTML("Twoj wynik: ".n);
-                    document.getElementById("wyniki").appenedChild(para);
-                }
-            }
-        }
-        function ten() {
-            var n = document.getElementById("liczba");
-            var cb = document.getElementById("sixteen");
-            var cb2 = decument.getElementById("two1");
-            var cb8 = document.getElementById("eight1");
-            var cb16 = document.getElementById("sixteen1");  
-            
-            if(n == "") {
-                test.style.display="none";
-            } else {
-                if(cb.checked == true) {
-                    if(cb2.checked == "true") {
-                        n = parseInt(n, 2);
-                    }  
-                    if(cb8.checked == "true") {
-                        n = parseInt(n, 8);
-                    }          
-                    if(cb16.checked == "true") {
-                        n = parseInt(n, 16);
-                    }
-                    const para = document.createElement("p");
-                    para.innerHTML("Twoj wynik: ".n);
-                    document.getElementById("wyniki").appenedChild(para);
-                    
-                }
 
-            }
 
+        function paragraph(element) {
+            const para = document.createElement("p");
+            para.innerHTML = "Twoj wynik: ".element;
+            document.getElementById("wyniki").appenedChild(para);
         }
-        function sixteen() {
-            var n = document.getElementById("liczba");
-            var cb = document.getElementById("sixteen");
-            var cb2 = decument.getElementById("two1");
-            var cb8 = document.getElementById("eight1");
-            var cb16 = document.getElementById("sixteen1");
-            if(cb2.checked == "true") {
-                n = parseInt(n, 2);
-            }  
-            if(cb8.checked == "true") {
-                n = parseInt(n, 8);
-            }   
-            // if(cb16.checked == "true") {
-            //     n = parseInt(n, 16);
-            // }        
-            
-            if(n == "") {
-                test.style.display="none";
-            } else {
-                if(cb.checked == true) {
-                    n.toString(16);
-                    const para = document.createElement("p");
-                    para.innerHTML("Twoj wynik: ".n);
-                    document.getElementById("wyniki").appenedChild(para);
-                }
-            }
 
-        }
         function logOut() {
             <?php
             session_unset();
             ?>
         }
+
     </SCRIPT>
-    <button onclick="logOut()"><a href="sesja.php">Wyloguj sie</a></button>
+    <button style="background-color:#163d02" onclick="logOut()"><a href="sesja.php">Wyloguj sie</a></button>
 
 </body>
 </html>

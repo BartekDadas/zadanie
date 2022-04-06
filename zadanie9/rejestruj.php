@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="strona.css">
+    <link rel="stylesheet"  href="strona.css">
     <title>Rejestracja</title>
 </head>
 <body>
+    <div class="bg"></div>
+    <div class=" bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="content">
     <form method="POST">
         <p id="log1">Ustaw swoj login</p>
         <input id="log2" type="text" name="login">
@@ -15,8 +19,10 @@
         <input is="log4" type="text" name="email">
         <p id="log5">Ustaw haslo</p>
         <input id="log6" type="password" name="pass">
-        <input name="btn_submit_rej" type="submit">
+        </br>
+        <input  class=" btn_com footer" name="btn_submit_rej" type="submit">
     </form>
+    </div>
     <?php
     if(isset($_POST['btn_submit_rej'])) {
         if(isset($_POST['login']) != "" && isset($_POST['email']) != "" && isset($_POST['pass']) != "") {
